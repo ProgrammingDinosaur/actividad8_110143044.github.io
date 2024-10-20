@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tablero de Pobreza en México (2008-2018)</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawCharts);
+
+        function drawCharts() {
+            // Gráfico 1: Evolución de la Pobreza y Pobreza Extrema
+            var data1 = google.visualization.arrayToDataTable([
+                ['Año', 'Número de Personas en Pobreza (millones)', 'Número de Personas en Pobreza Extrema (millones)'],
+                [2008, 49.5, 12.3],
+                [2010, 52.8, 13.0],
+                [2012, 53.3, 11.5],
+                [2014, 55.3, 11.4],
+                [2016, 53.4, 9.4],
+                [2018, 52.4, 9.3]
+            ]);
+
+            var options1 = {
+                title: 'Evolución de la Pobreza y Pobreza Extrema en México (2008-2018)',
+                curveType: 'function',
+                legend: { position: 'bottom' }
+            };
+
+            var chart1 = new google.visualization.LineChart(document.getElementById('chart_pobreza_extrema'));
+            chart1.draw(data1, options1);
+
+            // Gráfico 2: Pobreza por Entidad Federativa (último año)
+            var data2 = google.visualization.arrayToDataTable([
+                ['Entidad Federativa', '2018 (%)'],
+                ['Aguascalientes', 26.2],
+                ['Baja California', 23.3],
+                ['Baja California Sur', 18.1],
+                ['Campeche', 43.6],
+                ['Chiapas', 76.4],
+                ['Ciudad de México', 30.6],
+                ['Colima', 30.9],
+                ['Durango', 30.8],
+                ['Guanajuato', 36.3],
+                ['Guerrero', 66.5],
+                ['Hidalgo', 43.8],
+                ['Jalisco', 28.4],
+                ['México', 42.7],
+                ['Michoacán', 46.0],
+                ['Morelos', 50.8],
+                ['Nayarit', 34.8],
+                ['Nuevo León', 14.5],
+                ['Oaxaca', 66.4],
+                ['Puebla', 58.9],
+                ['Querétaro', 27.6],
+                ['Quintana Roo', 27.0],
+                ['San Luis Potosí', 43.4],
+                ['Sinaloa', 30.9],
+                ['Sonora', 28.2],
+                ['Tabasco', 53.5],
+                ['Tamaulipas', 35.1],
+                ['Tlaxcala', 48.4],
+                ['Veracruz', 61.8],
+                ['Yucatán', 40.8],
+                ['Zacatecas', 46.8]
+            ]);
+
+            var options2 = {
+                title: 'Pobreza por Entidad Federativa (2018)',
+                isStacked: true,
+                legend: { position: 'bottom' }
+            };
+
+            var chart2 = new google.visualization.ColumnChart(document.getElementById('chart_pobreza_entidad'));
+            chart2.draw(data2, options2);
+
+            // Gráfico 3: Carencias Sociales (último año)
+            var data3 = google.visualization.arrayToDataTable([
+                ['Carencia Social', '2018 (%)'],
+                ['Rezago Educativo', 16.9],
+                ['Acceso a Servicios de Salud', 16.2],
+                ['Acceso a Seguridad Social', 57.3],
+                ['Calidad y Espacios de la Vivienda', 11.1],
+                ['Servicios Básicos en la Vivienda', 19.8],
+                ['Acceso a la Alimentación', 20.4]
+            ]);
+
+            var options3 = {
+                title: 'Carencias Sociales en México (2018)',
+                legend: { position: 'bottom' }
+            };
+
+            var chart3 = new google.visualization.BarChart(document.getElementById('chart_carencias_sociales'));
+            chart3.draw(data3, options3);
+
+            // Gráfico 4: Comparativa Urbano vs. Rural
+            var data4 = google.visualization.arrayToDataTable([
+                ['Año', 'Pobreza Urbana (%)', 'Pobreza Rural (%)'],
+                [2008, 38.9, 62.5],
+                [2010, 40.6, 61.6],
+                [2012, 40.4, 61.6],
+                [2014, 40.6, 61.1],
+                [2016, 37.6, 58.2],
+                [2018, 37.6, 55.3]
+            ]);
+
+            var options4 = {
+                title: 'Pobreza Urbana vs. Rural (2008-2018)',
+                curveType: 'function',
+                legend: { position: 'bottom' }
+            };
+
+            var chart4 = new google.visualization.LineChart(document.getElementById('chart_urbano_rural'));
+            chart4.draw(data4, options4);
+
+            // Gráfico 5: Pobreza por Características Demográficas
+            var data5 = google.visualization.arrayToDataTable([
+                ['Grupo Demográfico', '2008 (%)', '2010 (%)', '2012 (%)', '2014 (%)', '2016 (%)', '2018 (%)'],
+                ['Mujeres', 44.6, 46.3, 45.5, 46.4, 43.8, 42.4],
+                ['Hombres', 44.0, 45.8, 45.5, 45.9, 43.5, 41.4],
+                ['Menores de 18 años', 53.3, 53.8, 51.9, 53.1, 49.5, 49.6],
+                ['Adolescentes y Jóvenes (12-29 años)', 43.0, 45.6, 42.5, 43.1, 42.8, 42.4],
+                ['Adultos Mayores (65+ años)', 44.9, 47.4, 45.8, 46.5, 45.8, 41.1],
+                ['Población Indígena', 76.0, 78.4, 77.6, 77.9, 75.6, 74.9],
+                ['Población No Indígena', 41.4, 43.3, 43.4, 42.8, 39.4, 37.6]
+            ]);
+
+            var options5 = {
+                title: 'Pobreza por Características Demográficas (2008-2018)',
+                legend: { position: 'bottom' }
+            };
+
+            var chart5 = new google.visualization.ColumnChart(document.getElementById('chart_demograficas'));
+            chart5.draw(data5, options5);
+        }
+    </script>
+</head>
+<body>
+    <h1>Tablero de Pobreza en México (2008-2018)</h1>
+    <div id="chart_pobreza_extrema" style="width: 900px; height: 500px;"></div>
+    <div id="chart_pobreza_entidad" style="width: 900px; height: 500px;"></div>
+    <div id="chart_carencias_sociales" style="width: 900px; height: 500px;"></div>
+    <div id="chart_urbano_rural" style="width: 900px; height: 500px;"></div>
+    <div id="chart_demograficas" style="width: 900px; height: 500px;"></div>
+</body>
+</html>
